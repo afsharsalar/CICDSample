@@ -16,10 +16,12 @@ jobs:
     - name: 🔨 Restore dependencies
       run: dotnet restore
     - name: 💣 Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore
     - name: 🔍 Test
       run: dotnet test 
-    - name: 📂 Sync files
+    - name: publish
+      run : dotnet publish 
+    - name: 🚀 Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         local-dir: ./CICDSample/bin/Release/
